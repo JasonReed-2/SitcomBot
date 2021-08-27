@@ -1,0 +1,24 @@
+{
+    "category": {
+        "entry": {
+            "CanInterupt": false,
+            "AudioOptions": [
+                "./Audio/Entry/applause-1.wav",
+                "./Audio/Entry/applause-2.wav",
+                "./Audio/Entry/crowd-excited.mp3"
+            ]
+        },
+        "laugh": {
+            "CanInterupt": false,
+            "AudioOptions": [
+                "./Audio/Laugh/crowd_laugh_1.wav",
+                "./Audio/Laugh/crowd_laugh_2.wav",
+                "./Audio/Laugh/crowd-laugh-3.wav",
+                "./Audio/Laugh/people-laughing-1.mp3",
+                "./Audio/Laugh/people-laughing-2.mp3",
+                "./Audio/Laugh/people-laughing-3.mp3",
+                "./Audio/Laugh/people-laughing-4.mp3"
+            ]
+        }
+    }
+}
