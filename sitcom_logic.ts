@@ -16,6 +16,26 @@ function percent_chance(percent: number): boolean {
 
 export class SitComLogic {
     private speakingMembers = new Set()
+    private ap = new AudioPlayer()
+
+    async register_vc(vc: Discord.VoiceChannel) {
+        await this.ap.register_vc(vc)
+    }
+
+    register_change(id: string, speaking:number) {
+        if (speaking) this.speakingMembers.add(id)
+        else {
+            this.speakingMembers.delete(id)
+            if (percent_chance(.25)) {this.ap.play_audio(as.category['laugh'])}
+        }
+    }
+
+    register_entry() {
+        this.ap.play_audio(as.category['entry'])
+    }
+}
+
+class AudioPlayer {
     private playing = false
     private connection: Discord.VoiceConnection
     private dispatcher: Discord.StreamDispatcher
@@ -27,16 +47,6 @@ export class SitComLogic {
                 resolve('')
             })
         })
-    }
-
-    register_change(id: string, speaking:number) {
-        if (speaking===1) this.speakingMembers.add(id)
-        else this.speakingMembers.delete(id)
-        if (percent_chance(.25) && this.speakingMembers.size == 0) {this.play_audio(as.category['laugh'])}
-    }
-
-    register_entry() {
-        this.play_audio(as.category['entry'])
     }
 
     play_audio(input: audio_category) {
